@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>📋 Bookmarked Routes</h2>
+<ul class="list-group">
+    {% for b in bookmarks %}
+        <li class="list-group-item">{{ b.route }} — ${{ b.price }} on {{ b.date }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

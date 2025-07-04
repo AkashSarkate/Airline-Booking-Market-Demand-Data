@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2 class="text-center mb-4">✈️ Airline Market Dashboard</h2>
+
+<form class="row mb-4" method="get">
+    <div class="col">
+        <input type="text" name="from" class="form-control" placeholder="From (e.g., SYD)" value="{{ origin or '' }}">
+    </div>
+    <div class="col">
+        <input type="text" name="to" class="form-control" placeholder="To (e.g., MEL)" value="{{ destination or '' }}">
+    </div>
+    <div class="col">
+        <button class="btn btn-primary" type="submit">Filter</button>
+    </div>
+</form>
+
+<h4>📍 Popular Routes</h4>
+<ul class="list-group mb-4">
+    {% for route, count in insights.popular_routes.items() %}
+        <li class="list-group-item d-flex justify-content-between">
+            {{ route }} — {{ count }} bookings
+            <a class="btn btn-sm btn-outline-success" href="{{ url_for('bookmark', flight_id=loop.index) }}">Bookmark</a>
+        </li>
+    {% endfor %}
+</ul>
+
+<h4>💰 Average Prices</h4>
+<ul class="list-group mb-4">
+    {% for route, price in insights.avg_price.items() %}
+        <li class="list-group-item">{{ route }} — ${{ price }}</li>
+    {% endfor %}
+</ul>
+
+<h4>📆 High Demand Dates</h4>
+<ul class="list-group mb-4">
+    {% for date, count in insights.high_demand_dates.items() %}
+        <li class="list-group-item">{{ date }} — {{ count }} bookings</li>
+    {% endfor %}
+</ul>
+
+<h4>📊 Popular Routes Chart</h4>
+<div class="card p-3 mb-4">
+    {{ insights.chart_html | safe }}
+</div>
+
+<h4>📈 Price Trend Chart</h4>
+<div class="card p-3">
+    {{ insights.price_chart | safe }}
+</div>
+{% endblock %}
