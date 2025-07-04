@@ -1,0 +1,46 @@
+#How to Run-
+1. Clone or download the repository
+   git clone https://github.com/yourusername/airline-dashboard.git
+   cd airline-dashboard
+
+2. (Optional) Create and activate a virtual environment
+   python -m venv venv
+
+   On Windows:
+     venv\Scripts\activate
+
+   On macOS/Linux:
+     source venv/bin/activate
+
+3. Install the required Python packages
+   pip install -r requirements.txt
+
+4. Run the Flask web application
+   python app.py
+
+5. Open the app in your web browser
+   http://localhost:5000          # Main dashboard
+   http://localhost:5000/admin    # Admin panel for bookmarked routes
+
+# Airline Booking Market Demand Dashboard
+
+This is a Python Flask web app that visualizes and analyzes airline market demand data using interactive charts. It was built as part of a technical assessment for an internship opportunity.
+
+## Features
+
+- Search and filter airline routes by origin and destination
+- Interactive charts for:
+  - Route popularity (bar chart)
+  - Price trends over time (line chart)
+- Bookmark popular routes stored in SQLite database
+- Admin panel to view bookmarked routes
+- Modular code structure using Flask and Jinja2 templates
+
+## Tech Stack
+
+- Backend: Python, Flask
+- Frontend: Bootstrap 5, Plotly
+- Database: SQLite with SQLAlchemy ORM
+- Visualization: Plotly Express
+
+
